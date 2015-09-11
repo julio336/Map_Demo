@@ -12,7 +12,20 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    @IBOutlet var labelLatitude: UILabel!
+    
+    @IBOutlet var labelLongitude: UILabel!
+    
+    @IBOutlet var labelHeight: UILabel!
+    
+    @IBOutlet var labelSpeed: UILabel!
+    
+    @IBOutlet var labelCourse: UILabel!
+    
+    @IBOutlet var labelAddress: UILabel!
+    
     @IBOutlet var map: MKMapView!
+    
     var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -58,6 +71,34 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         var region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         self.map.setRegion(region, animated: true)
         
+        var speed = userLocation.speed
+        var course = userLocation.course
+        
+        labelLatitude.text = String(stringInterpolationSegment: latitude)
+        labelLongitude.text = String(stringInterpolationSegment: longitude)
+        labelHeight.text = String(format: "%f", userLocation.verticalAccuracy)
+        labelSpeed.text = String(format: "%f", speed)
+        labelCourse.text = String(format: "%f", course)
+        
+        CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: {(placemarks, error) -> Void in
+            println(location)
+            
+            if error != nil {
+                println("Reverse geocoder failed with error" + error.localizedDescription)
+                return
+            }
+            
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as! CLPlacemark
+                println(pm.locality)
+                self.labelAddress.text = String("You are in  \(pm.locality) with Zipcode: \(pm.postalCode)")
+               
+            }
+            else {
+                println("Problem with the data received from geocoder")
+            }
+        })
+ 
     }
     
     func action(gestureRecognizer:UIGestureRecognizer) {
