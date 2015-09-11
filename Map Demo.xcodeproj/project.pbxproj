@@ -13,6 +13,7 @@
 		38F00D061BA2720900DE223C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F00D051BA2720900DE223C /* Images.xcassets */; };
 		38F00D091BA2720900DE223C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38F00D071BA2720900DE223C /* LaunchScreen.xib */; };
 		38F00D151BA2720900DE223C /* Map_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F00D141BA2720900DE223C /* Map_DemoTests.swift */; };
+		38F00D1F1BA28DD400DE223C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F00D1E1BA28DD400DE223C /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		38F00D0E1BA2720900DE223C /* Map DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F00D131BA2720900DE223C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38F00D141BA2720900DE223C /* Map_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_DemoTests.swift; sourceTree = "<group>"; };
+		38F00D1E1BA28DD400DE223C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F00D1F1BA28DD400DE223C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		38F00CF01BA2720900DE223C = {
 			isa = PBXGroup;
 			children = (
+				38F00D1E1BA28DD400DE223C /* CoreLocation.framework */,
 				38F00CFB1BA2720900DE223C /* Map Demo */,
 				38F00D111BA2720900DE223C /* Map DemoTests */,
 				38F00CFA1BA2720900DE223C /* Products */,
