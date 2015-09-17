@@ -76,7 +76,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         labelLatitude.text = String(stringInterpolationSegment: latitude)
         labelLongitude.text = String(stringInterpolationSegment: longitude)
-        labelHeight.text = String(format: "%f", userLocation.verticalAccuracy)
+        labelHeight.text = String(format: "%f", userLocation.altitude)
         labelSpeed.text = String(format: "%f", speed)
         labelCourse.text = String(format: "%f", course)
         
@@ -91,7 +91,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             if placemarks.count > 0 {
                 let pm = placemarks[0] as! CLPlacemark
                 println(pm.locality)
-                self.labelAddress.text = String("You are in  \(pm.locality) with Zipcode: \(pm.postalCode)")
+                self.labelAddress.text = String("You are in \(pm.locality) with Zipcode: \(pm.postalCode)")
                
             }
             else {

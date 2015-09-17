@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>4F4F3FD4-3630-4FE4-A4EC-EA5018AA8FFB</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Map Demo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>51B0D8EF75EC71A702391E5D644B3143B7985B65</key>
 		<string>github.com:julio336/Map_Demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Map Demo.xcodeproj/project.xcworkspace</string>
+	<string>Map Demo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>51B0D8EF75EC71A702391E5D644B3143B7985B65</key>
