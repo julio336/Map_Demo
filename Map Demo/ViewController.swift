@@ -37,31 +37,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.startUpdatingLocation()
         
         
-        var latitude:CLLocationDegrees = 40.7
-        var longitude:CLLocationDegrees = -73.9
-        var latDelta:CLLocationDegrees = 0.01
-        var lonDelta:CLLocationDegrees = 0.01
-        var span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        var location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        var region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        let latitude:CLLocationDegrees = 40.7
+        let longitude:CLLocationDegrees = -73.9
+        let latDelta:CLLocationDegrees = 0.01
+        let lonDelta:CLLocationDegrees = 0.01
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         map.setRegion(region, animated: true)
         
-        var annotation = MKPointAnnotation()
+        let annotation = MKPointAnnotation()
         annotation.coordinate = location
         annotation.title = "USA"
         annotation.subtitle = "One random place"
         map.addAnnotation(annotation)
         
-        var uilpr = UILongPressGestureRecognizer(target: self, action: "action:")
+        let uilpr = UILongPressGestureRecognizer(target: self, action: "action:")
         uilpr.minimumPressDuration = 1
         map.addGestureRecognizer(uilpr)
         
       
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        println(locations)
-        var userLocation:CLLocation = locations[0] as! CLLocation
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        var userLocation:CLLocation = locations[0] 
         var latitude = userLocation.coordinate.latitude
         var longitude = userLocation.coordinate.longitude
         var latDelta:CLLocationDegrees = 0.01
@@ -81,31 +81,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         labelCourse.text = String(format: "%f", course)
         
         CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: {(placemarks, error) -> Void in
-            println(location)
+            print(location)
             
             if error != nil {
-                println("Reverse geocoder failed with error" + error.localizedDescription)
+                print("Reverse geocoder failed with error" + error!.localizedDescription)
                 return
             }
             
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as! CLPlacemark
-                println(pm.locality)
-                self.labelAddress.text = String("You are in \(pm.locality) with Zipcode: \(pm.postalCode)")
+            if placemarks!.count > 0 {
+                let pm = placemarks?.first
+                print(pm!.locality)
+                self.labelAddress.text = String("You are in \(pm!.locality) with Zipcode: \(pm!.postalCode)")
                
             }
             else {
-                println("Problem with the data received from geocoder")
+                print("Problem with the data received from geocoder")
             }
         })
  
     }
     
     func action(gestureRecognizer:UIGestureRecognizer) {
-        println("Gesture Recognize")
-        var touchPoint = gestureRecognizer.locationInView(self.map)
-        var newCoordinate:CLLocationCoordinate2D = map.convertPoint(touchPoint, toCoordinateFromView: self.map)
-        var annotation = MKPointAnnotation()
+        print("Gesture Recognize")
+        let touchPoint = gestureRecognizer.locationInView(self.map)
+        let newCoordinate:CLLocationCoordinate2D = map.convertPoint(touchPoint, toCoordinateFromView: self.map)
+        let annotation = MKPointAnnotation()
         annotation.coordinate = newCoordinate
         annotation.title = "New place"
         annotation.subtitle = "One new random place"
